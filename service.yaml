@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bank-api-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: bank-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+#kubectl apply -f service.yaml

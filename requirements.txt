@@ -1,0 +1,15 @@
+#localAppDB/                --> # My Project
+#├── app/                   --> # App Folder
+#│   ├── __init__.py        --> # Initializes Flask app and extensions
+#│   ├── models.py          --> # SQLAlchemy models
+#│   ├── routes.py          --> # Flask routes (views)
+#│   └── config.py          --> # Configuration settings
+#├── mainy.py               --> # Entry point
+#├── setup.py               --> # Packaging instructions
+#├── MANIFEST.in            --> # (Optional) Include non-code files
+#├── requirements.txt       --> # Dependencies
+#├── test_app.py            --> # Test cases
+#└── README.md
+Flask
+Flask-SQLAlchemy
+oracledb

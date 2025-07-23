@@ -1,0 +1,12 @@
+MANIFEST.in
+setup.py
+app/__init__.py
+app/config.py
+app/models.py
+app/routes.py
+localAppDB.egg-info/PKG-INFO
+localAppDB.egg-info/SOURCES.txt
+localAppDB.egg-info/dependency_links.txt
+localAppDB.egg-info/entry_points.txt
+localAppDB.egg-info/requires.txt
+localAppDB.egg-info/top_level.txt
