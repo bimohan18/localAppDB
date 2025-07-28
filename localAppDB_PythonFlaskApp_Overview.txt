@@ -1,0 +1,59 @@
+🌐 API Overview
+GET /readCustomer/<custid>: Fetches structured customer info by ID, joins CUSTOMERS, CUSTOMER_CONTACTS_INFO, and ACCOUNTS.
+
+POST /createCustomer: Inserts into CUSTOMER_CONTACTS_INFO, ACCOUNTS, and CUSTOMERS with auto-generated IDs and computed account numbers.
+
+🛠️ Helper Functions
+get_next_value(cursor, table, column): Safely increments primary key values.
+get_next_value(cursor, table, column): Safely increments primary key values.
+generate_account_fields(cursor, acc_type, routing_base): Computes account_no and routing using ACC_ID from ACCOUNTS_INFO.
+
+💽 Table Schema Summary
+1. CUSTOMERS
+CUST_DBID NUMBER(38,0) — PK
+
+CUST_FIRSTNAME, CUST_MIDDLENAME, CUST_LASTNAME
+
+CUST_TYPE, CUST_DOCID, CUST_DOCID_TYPE
+
+CUST_CONTACTID, CUST_ACCSLNO — FK links
+
+2. CUSTOMER_CONTACTS_INFO
+CUST_CONTACTID VARCHAR2(25)
+
+Fields for full address, email, and phone
+
+3. ACCOUNTS
+CUST_ACCSLNO VARCHAR2(25) — PK
+
+ACCOUNT_NO NUMBER(38,0)
+
+ROUTING_NUMBER, ACC_TYPE, BALANCE, ACC_STATUS
+
+4. ACCOUNTS_INFO
+ACC_TYPE VARCHAR2(25)
+
+ACC_ID NUMBER(38,0) — Used as prefix in ACCOUNT_NO
+
+📦 Expected Payload for POST /createCustomer
+json
+{
+  "name": { "first": "Jane", "middle": "A.", "last": "Doe" },
+  "type": "INDIVIDUAL",
+  "document": { "id": "X1234567", "type": "PASSPORT" },
+  "email": "jane.doe@example.com",
+  "phone": 5551234567,
+  "address": {
+    "line1": "456 Harbor Street",
+    "line2": "Apt 7C",
+    "line3": "",
+    "city": "East Providence",
+    "zip": 2914,
+    "state": "RI",
+    "country": "USA"
+  },
+  "account": {
+    "type": "SAVINGS",
+    "routing": "123456789"
+  }
+}
